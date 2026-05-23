@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mahalyasi Ayurveda — Growth Strategy v2 | FlumenX × Misc Archive</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#FAF6EE;
+  --ink:#181008;
+  --gold:#B8862A;
+  --gold-lt:#E8C96A;
+  --rose:#C17B5E;
+  --teal:#2A6B62;
+  --teal-lt:#89ACA0;
+  --sage:#6B8C6E;
+  --herb:#1A4A32;
+  --warmgrey:#8A7E72;
+  --muted:#D5CEC4;
+  --white:#FFFFFF;
+  --danger:#B85252;
+  --ok:#2A6B3A;
+  --card:#ffffffb8;
+  --border:rgba(184,134,42,0.18);
+  --sh:0 4px 32px rgba(26,18,8,0.07);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;position:relative;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 55% 40% at 85% 5%,rgba(107,140,110,0.11) 0%,transparent 60%),radial-gradient(ellipse 45% 45% at 8% 85%,rgba(184,134,42,0.07) 0%,transparent 55%);pointer-events:none;z-index:0;}
+
+/* ── HEADER ── */
+.site-header{background:var(--ink);color:var(--cream);position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.35);}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;padding:11px 24px;gap:14px;}
+.hdr-brand .agency{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--gold-lt);letter-spacing:2px;text-transform:uppercase;}
+.hdr-brand .client{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;}
+.hdr-tag{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--teal-lt);padding:3px 9px;border:1px solid var(--teal-lt);border-radius:2px;letter-spacing:1.2px;text-transform:uppercase;}
+.prog-wrap{background:rgba(255,255,255,0.08);height:3px;}
+.prog-bar{height:3px;background:linear-gradient(90deg,var(--gold),var(--teal-lt));width:0%;transition:width .18s;}
+.tabs-wrap{background:var(--ink);border-top:1px solid rgba(255,255,255,0.06);display:flex;overflow-x:auto;scrollbar-width:none;}
+.tabs-wrap::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:9px 17px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;color:var(--muted);background:none;border:none;cursor:pointer;letter-spacing:.4px;text-transform:uppercase;border-bottom:2px solid transparent;transition:all .18s;white-space:nowrap;}
+.tab-btn:hover{color:var(--cream);}
+.tab-btn.active{color:var(--gold-lt);border-bottom-color:var(--gold-lt);}
+
+/* ── MAIN ── */
+.main{max-width:1160px;margin:0 auto;padding:24px 18px 60px;position:relative;z-index:1;}
+.panel{display:none;}.panel.active{display:block;}
+
+/* ── HERO ── */
+.hero{background:var(--ink);color:var(--cream);border-radius:12px;padding:32px 36px;margin-bottom:22px;position:relative;overflow:hidden;}
+.hero::after{content:'ॐ';position:absolute;right:36px;top:50%;transform:translateY(-50%);font-size:110px;color:rgba(184,134,42,0.07);font-family:serif;line-height:1;pointer-events:none;}
+.hero .tag{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--gold-lt);letter-spacing:2px;text-transform:uppercase;margin-bottom:9px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,32px);font-weight:700;line-height:1.2;margin-bottom:9px;}
+.hero p{font-size:13.5px;color:var(--teal-lt);max-width:580px;line-height:1.65;}
+.hero-meta{display:flex;gap:22px;margin-top:18px;flex-wrap:wrap;}
+.hm-item .label{font-family:'DM Mono',monospace;font-size:8.5px;color:var(--warmgrey);text-transform:uppercase;letter-spacing:1.3px;}
+.hm-item .val{font-weight:600;font-size:13px;color:var(--gold-lt);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px;}
+@media(max-width:780px){.g2,.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.g2,.g3,.g4{grid-template-columns:1fr;}.hero{padding:22px 18px;}.hero::after{display:none;}}
+
+/* ── CARD ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;box-shadow:var(--sh);backdrop-filter:blur(8px);}
+.card.dark{background:var(--ink);color:var(--cream);border-color:rgba(184,134,42,0.28);}
+.card.herb{background:linear-gradient(135deg,#1A4A32,#0D2B1F);color:var(--cream);border-color:rgba(107,140,110,0.25);}
+.card-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--warmgrey);margin-bottom:5px;}
+.card h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;margin-bottom:9px;}
+.big-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--gold);line-height:1;}
+.sub{font-size:11.5px;color:var(--warmgrey);margin-top:3px;}
+
+/* ── SECTION HEAD ── */
+.sec{display:flex;align-items:center;gap:10px;margin:22px 0 12px;}
+.sec h2{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;}
+.sec .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+.sec .line{flex:1;height:1px;background:var(--border);}
+
+/* ── INSIGHT ── */
+.ins{background:linear-gradient(135deg,rgba(42,107,98,0.08),rgba(184,134,42,0.05));border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:13px 17px;margin-bottom:13px;font-size:13.5px;line-height:1.65;}
+.ins strong{color:var(--teal);}
+.ins.gold{border-left-color:var(--gold);background:linear-gradient(135deg,rgba(184,134,42,0.09),rgba(193,123,94,0.05));}
+.ins.gold strong{color:var(--gold);}
+.ins.rose{border-left-color:var(--rose);background:linear-gradient(135deg,rgba(193,123,94,0.1),rgba(184,134,42,0.04));}
+.ins.rose strong{color:var(--rose);}
+
+/* ── TABLES ── */
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:13px;}
+.tbl th{background:var(--ink);color:var(--gold-lt);font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.9px;text-transform:uppercase;padding:9px 13px;text-align:left;}
+.tbl td{padding:10px 13px;border-bottom:1px solid var(--border);vertical-align:top;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:hover td{background:rgba(184,134,42,0.04);}
+.tbl .total td{background:var(--ink);color:var(--gold-lt);font-weight:700;font-size:13px;}
+.tbl .note td{font-size:11.5px;color:var(--warmgrey);background:rgba(184,134,42,0.04);}
+.tbl-herb thead th{background:linear-gradient(90deg,#1A4A32,#0D2B1F);}
+
+/* ── BADGE ── */
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:9.5px;font-weight:600;font-family:'DM Mono',monospace;letter-spacing:.4px;}
+.b-high{background:rgba(42,107,58,0.14);color:var(--ok);}
+.b-med{background:rgba(184,134,42,0.14);color:var(--gold);}
+.b-low{background:rgba(138,126,114,0.14);color:var(--warmgrey);}
+.b-hot{background:rgba(193,123,94,0.2);color:var(--rose);}
+.b-local{background:rgba(42,107,98,0.14);color:var(--teal);}
+
+/* ── VOL BAR ── */
+.vb{display:flex;align-items:center;gap:7px;}
+.vb-fill{height:5px;border-radius:3px;background:linear-gradient(90deg,var(--teal),var(--gold-lt));display:block;}
+
+/* ── TASK ── */
+.task-list{display:flex;flex-direction:column;gap:7px;margin-bottom:14px;}
+.task{display:flex;align-items:flex-start;gap:11px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:11px 13px;cursor:pointer;transition:all .18s;}
+.task:hover{border-color:var(--gold);box-shadow:0 2px 10px rgba(184,134,42,0.09);}
+.task.done{opacity:.5;background:var(--cream);}
+.task.done .ttl{text-decoration:line-through;color:var(--warmgrey);}
+.tcb{width:17px;height:17px;border-radius:4px;border:2px solid var(--muted);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .18s;background:var(--white);}
+.task.done .tcb{background:var(--teal);border-color:var(--teal);}
+.tcb svg{width:9px;height:9px;stroke:white;fill:none;stroke-width:2.8;}
+.tb{flex:1;}
+.ttl{font-size:13px;font-weight:500;margin-bottom:3px;}
+.tmeta{display:flex;gap:6px;flex-wrap:wrap;margin-top:3px;}
+.pill{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.4px;padding:2px 7px;border-radius:10px;font-weight:500;}
+.p-dm{background:#E3EEF5;color:#2A5080;}
+.p-design{background:#EDE3F5;color:#5A2A80;}
+.p-client{background:#F5EAE3;color:#80402A;}
+.p-ops{background:#E3F5EA;color:#2A6B3A;}
+.p-week{background:rgba(184,134,42,0.11);color:var(--gold);}
+
+/* ── FILTER ── */
+.filter-bar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;}
+.fbtn{padding:5px 13px;font-size:10.5px;font-family:'DM Mono',monospace;letter-spacing:.4px;background:var(--white);border:1px solid var(--border);border-radius:20px;cursor:pointer;transition:all .18s;color:var(--warmgrey);}
+.fbtn:hover,.fbtn.active{background:var(--ink);color:var(--gold-lt);border-color:var(--ink);}
+
+/* ── WEEK ACCORDION ── */
+.wk{border:1px solid var(--border);border-radius:10px;margin-bottom:11px;overflow:hidden;background:var(--white);}
+.wk-head{display:flex;align-items:center;justify-content:space-between;padding:13px 17px;cursor:pointer;gap:11px;}
+.wk-head:hover{background:rgba(184,134,42,0.04);}
+.wk-title{font-family:'Playfair Display',serif;font-size:14.5px;font-weight:600;}
+.wk-prog{display:flex;align-items:center;gap:9px;flex:1;max-width:180px;}
+.mini-bar{flex:1;height:4px;background:var(--muted);border-radius:2px;}
+.mini-fill{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--teal),var(--gold-lt));transition:width .35s;}
+.mini-pct{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--warmgrey);white-space:nowrap;}
+.wk-chev{color:var(--warmgrey);transition:transform .18s;font-size:13px;}
+.wk.open .wk-chev{transform:rotate(180deg);}
+.wk-body{display:none;padding:0 17px 14px;border-top:1px solid var(--border);}
+.wk.open .wk-body{display:block;}
+
+/* ── ROADMAP ── */
+.rm-phase{position:relative;padding-left:30px;padding-bottom:22px;}
+.rm-phase::before{content:'';position:absolute;left:10px;top:22px;bottom:0;width:2px;background:linear-gradient(to bottom,var(--teal),var(--gold-lt));opacity:.25;}
+.rm-phase:last-child::before{display:none;}
+.rm-dot{position:absolute;left:0;top:3px;width:20px;height:20px;border-radius:50%;background:var(--ink);border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:7.5px;color:var(--teal-lt);font-weight:700;}
+.rm-period{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;}
+.rm-title{font-family:'Playfair Display',serif;font-size:14.5px;font-weight:700;margin-bottom:5px;}
+.rm-phase ul{font-size:12.5px;color:var(--warmgrey);padding-left:14px;line-height:1.85;}
+
+/* ── STRATEGY CARD ── */
+.sc{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;}
+.sc-head{display:flex;align-items:center;gap:13px;padding:14px 18px;background:linear-gradient(90deg,var(--ink),#281e0c);color:var(--cream);}
+.sc-head .ic{font-size:22px;flex-shrink:0;}
+.sc-head h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;}
+.sc-head .sub{font-size:11px;color:var(--teal-lt);margin-top:2px;}
+.sc-body{padding:16px 18px;font-size:13px;line-height:1.7;}
+.sc-body ul{padding-left:17px;margin:7px 0;}
+.sc-body li{margin-bottom:4px;}
+.sc-body strong{color:var(--teal);}
+
+/* ── SHOOT PLAN ── */
+.shoot-day{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:13px;}
+.sd-head{background:linear-gradient(90deg,#1A4A32,#0D2B1F);color:var(--cream);padding:12px 18px;display:flex;align-items:center;gap:12px;}
+.sd-head .day-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold-lt);}
+.sd-head .day-info h4{font-size:14px;font-weight:600;}
+.sd-head .day-info p{font-size:11px;color:var(--teal-lt);margin-top:2px;}
+.sd-body{padding:14px 18px;}
+.sd-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.sd-col h5{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:var(--warmgrey);margin-bottom:7px;}
+.sd-col ul{font-size:12.5px;padding-left:14px;line-height:1.8;}
+.sd-output{margin-top:12px;background:rgba(184,134,42,0.07);border-radius:6px;padding:10px 14px;font-size:12.5px;}
+.sd-output strong{color:var(--gold);font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:4px;}
+
+/* ── RISK ── */
+.risk{display:flex;gap:13px;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:13px 15px;margin-bottom:10px;}
+.rlvl{width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;flex-shrink:0;text-align:center;line-height:1.2;}
+.rlvl.high{background:rgba(184,82,82,0.11);color:var(--danger);}
+.rlvl.med{background:rgba(184,134,42,0.14);color:var(--gold);}
+.rlvl.low{background:rgba(42,107,62,0.11);color:var(--ok);}
+.risk h4{font-size:13px;font-weight:600;margin-bottom:3px;}
+.risk p{font-size:12px;color:var(--warmgrey);line-height:1.55;}
+
+/* ── WEBSITE PLAN ── */
+.wp-page{background:var(--white);border:1px solid var(--border);border-radius:10px;margin-bottom:12px;overflow:hidden;}
+.wp-head{display:flex;align-items:center;gap:12px;padding:13px 17px;background:linear-gradient(90deg,rgba(184,134,42,0.1),transparent);}
+.wp-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;}
+.wp-head h4{font-size:14px;font-weight:600;}
+.wp-head p{font-size:11.5px;color:var(--warmgrey);margin-top:2px;}
+.wp-body{padding:12px 17px 15px;font-size:13px;border-top:1px solid var(--border);}
+.wp-body ul{padding-left:15px;line-height:1.85;}
+.wp-body strong{color:var(--teal);}
+
+/* ── FOOTER ── */
+.doc-footer{margin-top:44px;padding:20px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.doc-footer .sig{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:1.2px;color:var(--warmgrey);text-transform:uppercase;}
+.doc-footer .tag{font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--gold);}
+</style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+
+<div class="site-header">
+  <div class="hdr-inner">
+    <div class="hdr-brand">
+      <div class="agency">FlumenX × Misc Archive</div>
+      <div class="client">Mahalyasi Panchakarma & Ayurveda</div>
+    </div>
+    <span class="hdr-tag">Growth Plan v2 — 2025–26</span>
+  </div>
+  <div class="prog-wrap"><div class="prog-bar" id="progBar"></div></div>
+  <div class="tabs-wrap">
+    <button class="tab-btn active"  onclick="showTab('strategy',this)">🌿 Strategy</button>
+    <button class="tab-btn" onclick="showTab('market',this)">📊 Market Intel</button>
+    <button class="tab-btn" onclick="showTab('shoots',this)">📷 Shoot Plan</button>
+    <button class="tab-btn" onclick="showTab('gmb',this)">📍 GMB &amp; Website</button>
+    <button class="tab-btn" onclick="showTab('plan30',this)">📅 30-Day Plan</button>
+    <button class="tab-btn" onclick="showTab('dmtasks',this)">📣 DM Tasks</button>
+    <button class="tab-btn" onclick="showTab('designtasks',this)">🎨 Design Tasks</button>
+    <button class="tab-btn" onclick="showTab('roadmap',this)">🗺️ Roadmap</button>
+    <button class="tab-btn" onclick="showTab('kpis',this)">📈 KPIs</button>
+    <button class="tab-btn" onclick="showTab('budget',this)">💰 Budget</button>
+    <button class="tab-btn" onclick="showTab('risks',this)">⚠️ Risks</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ══════════════ STRATEGY ══════════════ -->
+<div class="panel active" id="tab-strategy">
+  <div class="hero">
+    <div class="tag">Revised Proposal v2 — Confidential | FlumenX</div>
+    <h1>Build the Brand, Fill the Clinic,<br/>Then Scale Smart</h1>
+    <p>A ground-up brand awareness, lead generation and digital growth plan for Mahalyasi Panchakarma & Ayurveda Beauty Clinic, Adoor — built on real capacity, honest budget, and measurable results.</p>
+    <div class="hero-meta">
+      <div class="hm-item"><span class="label">Client</span><span class="val">Mr. Jayakrishnan Sir</span></div>
+      <div class="hm-item"><span class="label">Business</span><span class="val">Mahalyasi Ayurveda, Adoor</span></div>
+      <div class="hm-item"><span class="label">Phase 1 Budget</span><span class="val">₹21k/mo + ₹10k ads</span></div>
+      <div class="hm-item"><span class="label">Target Zone</span><span class="val">10–15km Radius (Phase 1)</span></div>
+      <div class="hm-item"><span class="label">Prepared By</span><span class="val">Anoop Krishna V A</span></div>
+    </div>
+  </div>
+
+  <div class="g4">
+    <div class="card"><div class="card-lbl">Goal: Daily Walkins</div><div class="big-num">10–12</div><div class="sub">From est. 4–5 today</div></div>
+    <div class="card"><div class="card-lbl">Month 3 Revenue Target</div><div class="big-num">₹1.8L</div><div class="sub">2 rooms, consistent flow</div></div>
+    <div class="card"><div class="card-lbl">Anchor Service</div><div class="big-num">₹1,999</div><div class="sub">Rejuvenation — already selling</div></div>
+    <div class="card"><div class="card-lbl">Phase 2 Lead Source</div><div class="big-num">Cross-DB</div><div class="sub">Jayakrishnan's biz leads → WA</div></div>
+  </div>
+
+  <div class="ins">
+    <strong>The Core Reality:</strong> Mahalyasi has real services, a working entry-level package, and a hotelier owner with existing business relationships. The gap is simple — <strong>nobody outside their existing patients knows Mahalyasi exists digitally.</strong> Phase 1 is purely about hyper-local brand awareness, search visibility, and converting that into walkins. No brand can shortcut this phase.
+  </div>
+  <div class="ins gold">
+    <strong>Phase 2 Lead Intelligence (Revised):</strong> Mr. Jayakrishnan's other businesses (Rudra Leisure, hospitality properties) have their own lead databases — people who've already shown interest in Kerala experiences and trusted the family. We can use those WhatsApp/phone contacts for <strong>targeted WhatsApp marketing and Meta Custom Audiences</strong> for Mahalyasi — not a combined package, just smart lead recycling. A warm database converts 3–4x better than cold ads. This is Phase 2 territory and needs his explicit go-ahead before we activate.
+  </div>
+  <div class="ins rose">
+    <strong>Budget Philosophy:</strong> ₹21k service + ₹10k ad spend = ₹31k/month total. We work within this. No scope inflation, no vanity deliverables. Every rupee has a job: awareness, lead capture, or conversion.
+  </div>
+
+  <div class="sec"><div class="dot"></div><h2>The 4-Pillar Growth Architecture</h2><div class="line"></div></div>
+
+  <div class="sc">
+    <div class="sc-head"><div class="ic">📍</div><div><h3>Pillar 1 — Search Presence (GMB + Website)</h3><div class="sub">Own local search before spending on ads — this is the foundation</div></div></div>
+    <div class="sc-body">
+      <p>When someone in Adoor searches "ayurveda near me" or "postnatal care Adoor," Mahalyasi must appear. Right now, competitors with weak services outrank better clinics simply because they're on Google. This is fixable in 30 days.</p>
+      <ul>
+        <li><strong>Google My Business:</strong> Full optimization — categories, photos, services, Q&A, weekly posts, review engine. Free real estate most clinics waste.</li>
+        <li><strong>4-Page Website (₹28k):</strong> Home, Services, Postnatal Care, Beauty Clinic, Contact + Appointment. WhatsApp CTA on every page. Mobile-first. Fast-loading.</li>
+        <li><strong>JustDial + Sulekha + Practo listings:</strong> Free local authority signals. Drives calls directly.</li>
+        <li><strong>SAG·EO Foundation:</strong> FAQ content on website answers real patient questions — postnatal care safety, beauty clinic process, package inclusions. Ranks over time, works forever.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sc">
+    <div class="sc-head"><div class="ic">📣</div><div><h3>Pillar 2 — Brand Awareness (Social + Content)</h3><div class="sub">Build recognizability in the 10km radius before scaling</div></div></div>
+    <div class="sc-body">
+      <p>People don't book Ayurveda from a single ad. They see the brand multiple times — a Reel, a GMB photo, a friend mentioning it, a story. We build that frequency at low cost through content.</p>
+      <ul>
+        <li><strong>Instagram Reels:</strong> 2/week. Authentic clinic footage — not AI videos. Real therapists, real treatments, real space. This is the #1 driver of organic reach.</li>
+        <li><strong>Facebook Posts:</strong> 2/week. Educational content (postnatal care tips, what is Shirodhara) + service features.</li>
+        <li><strong>WhatsApp Broadcast:</strong> 3x/month to growing patient list. Offers, health tips, monthly specials — never spam.</li>
+        <li><strong>Content from limited shoots:</strong> 2 structured shoot days/month → 30+ days of content. See Shoot Plan tab for breakdown.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sc">
+    <div class="sc-head"><div class="ic">🎯</div><div><h3>Pillar 3 — Lead Generation (Meta Ads)</h3><div class="sub">Paid traffic for the services with highest conversion potential</div></div></div>
+    <div class="sc-body">
+      <p>With ₹10k ad spend, we run 2 targeted campaigns at a 10–15km radius. Lead gen form ads (no website needed in Month 1). Audience: women 25–45, Pathanamthitta + surrounding districts.</p>
+      <ul>
+        <li><strong>Campaign 1 — ₹1,999 Rejuvenation Package:</strong> Already proven to sell. Lowest friction entry point. Run as lead gen + WhatsApp click.</li>
+        <li><strong>Campaign 2 — Postnatal Care / Beauty Clinic:</strong> Rotate monthly based on which has more capacity. Postnatal: women 24–36. Beauty: women 20–40.</li>
+        <li><strong>Re-targeting (Month 2+):</strong> Website visitors and video viewers get a follow-up offer ad. Cost per lead drops by 40–60%.</li>
+        <li><strong>Phase 2 — Custom Audience from Jayakrishnan's lead DB:</strong> Upload phone numbers from other business contacts (with permission) → Meta Custom Audience → show Mahalyasi ads to warm prospects.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sc">
+    <div class="sc-head"><div class="ic">🔁</div><div><h3>Pillar 4 — Retention & Referral Engine</h3><div class="sub">Existing patients are the cheapest lead source — activate them</div></div></div>
+    <div class="sc-body">
+      <p>One patient who refers 2 friends is worth more than 5 cold ad leads. We build a simple, no-tech referral loop into the clinic's daily workflow.</p>
+      <ul>
+        <li><strong>Post-treatment review ask:</strong> Every patient leaving → staff shows QR code for Google review. Target 20 reviews by end of Month 1.</li>
+        <li><strong>WhatsApp referral:</strong> "Share this message with a friend and both get a free add-on session on your next visit." No app needed.</li>
+        <li><strong>Clinic-to-hospital pipeline:</strong> Approach 2–3 maternity hospitals/gynecology clinics in 10km radius. Offer them postnatal care brochures to keep at reception. Revenue share or simple referral agreement.</li>
+        <li><strong>Seasonal campaigns:</strong> Karkidaka (monsoon) = panchakarma push. Post-onam = beauty clinic. Festival = gift voucher campaign.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ MARKET INTEL ══════════════ -->
+<div class="panel" id="tab-market">
+  <div class="hero">
+    <div class="tag">Market Research</div>
+    <h1>Search Intelligence & Demand Map</h1>
+    <p>Real keyword demand, patient search behavior, and content gaps your competitors aren't filling.</p>
+  </div>
+
+  <div class="sec"><div class="dot"></div><h2>High-Intent Local Keywords (Adoor / Pathanamthitta radius)</h2><div class="line"></div></div>
+  <table class="tbl">
+    <thead><tr><th>Keyword</th><th>Est. Monthly Volume</th><th>Intent</th><th>Our Action</th></tr></thead>
+    <tbody>
+      <tr><td><strong>ayurveda adoor</strong></td><td><div class="vb"><div class="vb-fill" style="width:58px"></div>600–800</div></td><td><span class="badge b-local">LOCAL</span></td><td>GMB rank + homepage SEO</td></tr>
+      <tr><td><strong>panchakarma pathanamthitta</strong></td><td><div class="vb"><div class="vb-fill" style="width:48px"></div>400–600</div></td><td><span class="badge b-high">BOOK</span></td><td>GMB category + service page</td></tr>
+      <tr><td><strong>postnatal care ayurveda kerala</strong></td><td><div class="vb"><div class="vb-fill" style="width:72px"></div>800–1,200</div></td><td><span class="badge b-hot">HOT</span></td><td>Dedicated page + Meta ads</td></tr>
+      <tr><td><strong>ayurvedic beauty clinic kerala</strong></td><td><div class="vb"><div class="vb-fill" style="width:65px"></div>700–1,000</div></td><td><span class="badge b-hot">HOT</span></td><td>Instagram Reels + page</td></tr>
+      <tr><td><strong>rejuvenation package kerala</strong></td><td><div class="vb"><div class="vb-fill" style="width:60px"></div>600–900</div></td><td><span class="badge b-med">BROWSE</span></td><td>Carousel ad + website</td></tr>
+      <tr><td><strong>ayurveda near adoor</strong></td><td><div class="vb"><div class="vb-fill" style="width:36px"></div>200–350</div></td><td><span class="badge b-local">LOCAL</span></td><td>GMB + JustDial</td></tr>
+      <tr><td><strong>shirodhara treatment kerala</strong></td><td><div class="vb"><div class="vb-fill" style="width:52px"></div>500–700</div></td><td><span class="badge b-med">BROWSE</span></td><td>Content + GMB photos</td></tr>
+      <tr><td><strong>ayurvedic facial glow kerala</strong></td><td><div class="vb"><div class="vb-fill" style="width:62px"></div>650–950</div></td><td><span class="badge b-hot">HOT</span></td><td>Instagram Reels + beauty page</td></tr>
+      <tr><td><strong>postnatal massage adoor pathanamthitta</strong></td><td><div class="vb"><div class="vb-fill" style="width:28px"></div>100–200</div></td><td><span class="badge b-high">BOOK</span></td><td>WhatsApp + GMB</td></tr>
+      <tr><td><strong>sutika paricharya treatment</strong></td><td><div class="vb"><div class="vb-fill" style="width:26px"></div>150–250</div></td><td><span class="badge b-high">BOOK</span></td><td>Blog/FAQ content on website</td></tr>
+      <tr><td><strong>abhyangam near me kerala</strong></td><td><div class="vb"><div class="vb-fill" style="width:45px"></div>350–550</div></td><td><span class="badge b-local">LOCAL</span></td><td>GMB + Instagram</td></tr>
+      <tr><td><strong>ayurvedic hair fall treatment adoor</strong></td><td><div class="vb"><div class="vb-fill" style="width:30px"></div>150–280</div></td><td><span class="badge b-high">BOOK</span></td><td>Beauty clinic page + Reels</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec"><div class="dot"></div><h2>What Questions Patients Are Asking (FAQ Content Targets)</h2><div class="line"></div></div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-lbl">Postnatal Care — Top Searches</div>
+      <ul style="font-size:12.5px;padding-left:15px;line-height:2;">
+        <li>How soon after delivery can I start Ayurveda?</li>
+        <li>Is postnatal care safe after C-section?</li>
+        <li>Does Ayurveda help with postpartum hair fall?</li>
+        <li>What does a 21-day postnatal package include?</li>
+        <li>Can Ayurveda increase breast milk supply?</li>
+        <li>Ayurvedic care for baby — oil massage, bath?</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-lbl">Beauty Clinic — Top Searches</div>
+      <ul style="font-size:12.5px;padding-left:15px;line-height:2;">
+        <li>What is Mukhalepam / Ayurvedic facial?</li>
+        <li>How many sessions for skin glow result?</li>
+        <li>Ayurveda for pigmentation and tan removal?</li>
+        <li>Is Ayurvedic facial better than chemical facial?</li>
+        <li>Ayurvedic treatment for acne scars?</li>
+        <li>Hair fall treatment in Ayurveda — duration?</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-lbl">Panchakarma / General — Top Searches</div>
+      <ul style="font-size:12.5px;padding-left:15px;line-height:2;">
+        <li>What is Panchakarma and how long does it take?</li>
+        <li>Shirodhara — what to expect?</li>
+        <li>Ayurveda for joint pain / back pain</li>
+        <li>Best time for Karkidaka chikitsa</li>
+        <li>Ayurveda vs physiotherapy for back pain</li>
+        <li>Is Ayurveda effective for stress and sleep?</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-lbl">Competitor Gaps We Can Own</div>
+      <ul style="font-size:12.5px;padding-left:15px;line-height:2;">
+        <li>No local clinic has dedicated postnatal Instagram content</li>
+        <li>Zero video content showing actual treatments in Adoor</li>
+        <li>No GMB with 20+ photos from any Adoor ayurveda clinic</li>
+        <li>No FAQ pages answering real patient concerns locally</li>
+        <li>No WhatsApp booking flow in local Ayurveda space</li>
+        <li>No beauty clinic + ayurveda combined positioning</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><div class="dot"></div><h2>Ad Targeting Intelligence</h2><div class="line"></div></div>
+  <table class="tbl">
+    <thead><tr><th>Campaign</th><th>Audience</th><th>Radius</th><th>Budget / Month</th><th>Expected Leads</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Rejuvenation ₹1,999 Package</strong></td><td>All adults 22–55, Adoor region</td><td>10km</td><td>₹5,000</td><td>18–30 leads</td></tr>
+      <tr><td><strong>Postnatal Care</strong></td><td>Women 23–38, married, health interest</td><td>15km</td><td>₹3,500</td><td>12–20 leads</td></tr>
+      <tr><td><strong>Ayurvedic Beauty Clinic</strong></td><td>Women 20–40, beauty/wellness interest</td><td>12km</td><td>₹1,500</td><td>8–14 leads</td></tr>
+      <tr style="font-weight:600;"><td colspan="3"><strong>Total Monthly Ad Budget</strong></td><td><strong>₹10,000</strong></td><td><strong>38–64 leads</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="ins gold"><strong>Phase 2 — Custom Audience Strategy:</strong> Once Mr. Jayakrishnan confirms access, we upload phone numbers from his other business lead databases to Meta as a Custom Audience. This shows Mahalyasi ads to <strong>people who already trust his family of businesses</strong> — conversion cost drops dramatically. We also build a Lookalike Audience from this list to find similar people in a wider region. This is the smart budget multiplier.</div>
+</div>
+
+<!-- ══════════════ SHOOT PLAN ══════════════ -->
+<div class="panel" id="tab-shoots">
+  <div class="hero">
+    <div class="tag">Content Production Strategy</div>
+    <h1>Maximum Content from Minimum Shoots</h1>
+    <p>2 structured shoot days per month generates 30+ days of content. Here's exactly how we plan it — and what we extract from each visit.</p>
+  </div>
+
+  <div class="ins">
+    <strong>The Principle:</strong> One well-planned shoot day at the clinic can produce 4–6 Reels, 8–10 static posts, 15+ Stories, and 3–4 ad creatives — if we plan it right. We brief the shots in advance, shoot systematically, and batch-edit everything. The cameraman (from their end or a local freelancer we brief) needs a clear shot list, not creative freedom.
+  </div>
+
+  <div class="ins gold">
+    <strong>Cameraman Strategy:</strong> We recommend Mahalyasi coordinate a local freelance videographer from Adoor/Pathanamthitta (₹1,500–2,500/day rate). We at FlumenX provide the full shot list, brief, and direction document. We review footage and edit. Client doesn't need to manage the creative — just coordinate the shoot day (patients available, treatments happening, space clean). One day/month is enough to start. We scale to 2 days if needed.
+  </div>
+
+  <div class="shoot-day">
+    <div class="sd-head">
+      <div class="day-num">01</div>
+      <div class="day-info"><h4>Shoot Day 1 — Clinic Foundation & Treatments</h4><p>Month 1 — Approx. 4 hours | Morning shoot preferred</p></div>
+    </div>
+    <div class="sd-body">
+      <div class="sd-grid">
+        <div class="sd-col">
+          <h5>📹 Video Shots to Capture</h5>
+          <ul>
+            <li>Clinic exterior + entrance (morning light)</li>
+            <li>Reception area + consultation room walkthrough</li>
+            <li>Treatment room setup — herbs, oils, lamp, table</li>
+            <li>Therapist preparing herbal oil (hands close-up)</li>
+            <li>Abhyangam massage in progress (patient's back — no face)</li>
+            <li>Shirodhara oil pour (close-up, slow-motion if possible)</li>
+            <li>Steam therapy — steam coming out, ambient shot</li>
+            <li>Therapist talking to camera — "Welcome to Mahalyasi" 30-sec intro</li>
+          </ul>
+        </div>
+        <div class="sd-col">
+          <h5>📸 Static Photos to Capture</h5>
+          <ul>
+            <li>Herbal ingredients laid out flat (overhead — Instagram worthy)</li>
+            <li>Oil bottles and treatment tools styled shot</li>
+            <li>Treatment room — clean, serene, wide angle</li>
+            <li>Therapist portrait (professional, warm)</li>
+            <li>Patient on table — back view only (consent required)</li>
+            <li>Medicinal plant / herb garden if available on premises</li>
+            <li>Name board / clinic signage — clean shot</li>
+            <li>Doctor / Vaidya portrait with consultation table</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sd-output">
+        <strong>📦 Content Output from This Shoot</strong>
+        3 Instagram Reels (clinic tour, treatment process, therapist intro) · 6–8 static posts (ingredient flats, room, team) · 10 Stories · 2 ad creatives (treatment + team) · GMB photo upload (15+ photos) · Website hero images and service section photos
+      </div>
+    </div>
+  </div>
+
+  <div class="shoot-day">
+    <div class="sd-head">
+      <div class="day-num">02</div>
+      <div class="day-info"><h4>Shoot Day 2 — Beauty Clinic + Postnatal Focus</h4><p>Month 1 or 2 — Approx. 3–4 hours | Soft lighting preferred</p></div>
+    </div>
+    <div class="sd-body">
+      <div class="sd-grid">
+        <div class="sd-col">
+          <h5>📹 Video Shots to Capture</h5>
+          <ul>
+            <li>Ayurvedic facial process — face pack application (with consent)</li>
+            <li>Herbal face pack ingredients being mixed (close-up)</li>
+            <li>Hair oil application — slow, aesthetic shot</li>
+            <li>Postnatal care room setup — warm, soft, clean</li>
+            <li>Baby oil massage demonstration (using doll or therapist's hand)</li>
+            <li>Therapist explaining postnatal care to camera — 45-sec explainer</li>
+            <li>"Before + After skin" of beauty clinic patient (only with signed consent)</li>
+          </ul>
+        </div>
+        <div class="sd-col">
+          <h5>📸 Static Photos to Capture</h5>
+          <ul>
+            <li>Beauty clinic setup — products, tools, lighting</li>
+            <li>Herbal face pack in bowl — styled flat lay</li>
+            <li>Close-up of herbal hair oil on hand</li>
+            <li>Postnatal care room — calm, safe feeling</li>
+            <li>Baby care items — oil, towel, natural aesthetic</li>
+            <li>Therapist smiling — welcoming, approachable portrait</li>
+            <li>Treatment price card / menu styled shot (if they have one)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sd-output">
+        <strong>📦 Content Output from This Shoot</strong>
+        3 Reels (beauty clinic intro, postnatal explainer, hair care) · 6–8 static posts (product flats, team, room) · 10 Stories · 2 ad creatives (beauty + postnatal) · Website beauty clinic page images · WhatsApp broadcast visual assets
+      </div>
+    </div>
+  </div>
+
+  <div class="shoot-day">
+    <div class="sd-head">
+      <div class="day-num">03</div>
+      <div class="day-info"><h4>Shoot Day 3 — Testimonials & Social Proof (Month 2+)</h4><p>Month 2 — Approx. 2 hours | Natural, candid feel</p></div>
+    </div>
+    <div class="sd-body">
+      <div class="sd-grid">
+        <div class="sd-col">
+          <h5>📹 Video Shots to Capture</h5>
+          <ul>
+            <li>2–3 patient video testimonials (60 sec each — their words, prompted by simple questions)</li>
+            <li>Doctor / Ayurvedic physician talking about postnatal care philosophy</li>
+            <li>Karkidaka season explainer — why monsoon is the best time</li>
+            <li>A full "Day at Mahalyasi" montage — 60-sec brand film</li>
+          </ul>
+        </div>
+        <div class="sd-col">
+          <h5>📸 Static Photos to Capture</h5>
+          <ul>
+            <li>Happy patient after treatment — smiling, with permission</li>
+            <li>Team photo — all staff, clinic front</li>
+            <li>Doctor with patient in consultation (candid feel)</li>
+            <li>Treatment package card / offer board styled</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sd-output">
+        <strong>📦 Content Output from This Shoot</strong>
+        1 brand film Reel · 3 testimonial Reels · Doctor authority Reel · 6 static posts · Ad creative with real patient face (if consent) · Social proof posts for Facebook
+      </div>
+    </div>
+  </div>
+
+  <div class="ins rose"><strong>No-Shoot Content Strategy (Between Shoot Days):</strong> We don't stop posting when there's no shoot. Between shoots we use: styled product flats (herbs, oils — clients can shoot with phone using our briefing), screenshot-style infographic posts, text-on-background quote posts from doctor, repost of relevant health content with Mahalyasi branding, WhatsApp status repurposed as Story, and seasonal/festival posts. These need zero cameraman.</div>
+</div>
+
+<!-- ══════════════ GMB & WEBSITE ══════════════ -->
+<div class="panel" id="tab-gmb">
+  <div class="hero">
+    <div class="tag">Search Presence Plan</div>
+    <h1>GMB Authority + 4-Page Website</h1>
+    <p>Owning local search before spending on ads — and building a 24/7 lead capture system that works while you sleep.</p>
+  </div>
+
+  <div class="sec"><div class="dot"></div><h2>Google My Business — Full Activation Plan</h2><div class="line"></div></div>
+  <div class="ins"><strong>Why GMB First:</strong> Every search for "ayurveda adoor," "panchakarma near me," or "postnatal care Pathanamthitta" surfaces GMB results above websites. Getting into the local 3-pack (top 3 map results) is the single highest-ROI action we can take — and it's free. Most clinics in Adoor have incomplete, photo-starved GMB profiles. We take that slot.</div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-lbl">GMB Setup Checklist</div>
+      <ul style="font-size:12.5px;padding-left:14px;line-height:2;">
+        <li>Business name, address, phone — verified</li>
+        <li>Primary category: Ayurvedic Clinic</li>
+        <li>Secondary: Panchakarma Centre, Beauty Salon, Postnatal Care</li>
+        <li>Business description — keyword-rich, 750 chars</li>
+        <li>Services listed with individual descriptions + prices</li>
+        <li>All treatments listed under "Services" tab</li>
+        <li>Hours, appointment link, WhatsApp number</li>
+        <li>Website link (once live)</li>
+        <li>20+ photos uploaded (from shoot days)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-lbl">GMB Ongoing Actions (Monthly)</div>
+      <ul style="font-size:12.5px;padding-left:14px;line-height:2;">
+        <li>2 GMB posts/week — treatment feature + offer</li>
+        <li>10 Q&A pre-seeded (Month 1), answered promptly after</li>
+        <li>Reply to every review within 24 hours</li>
+        <li>Add 4–6 new photos every month (from shoots)</li>
+        <li>Update "what's new" posts for seasonal campaigns</li>
+        <li>Track GMB Insights: views, calls, direction requests</li>
+        <li>Push for 5 new reviews every week through WhatsApp</li>
+        <li>Flag and respond to any spam reviews immediately</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="g3">
+    <div class="card dark">
+      <div class="card-lbl">Month 1 GMB Goal</div>
+      <div class="big-num" style="color:var(--gold-lt);">20+</div>
+      <div class="sub" style="color:var(--teal-lt);">Google reviews → local map pack entry</div>
+    </div>
+    <div class="card dark">
+      <div class="card-lbl">Month 2 GMB Goal</div>
+      <div class="big-num" style="color:var(--gold-lt);">40+</div>
+      <div class="sub" style="color:var(--teal-lt);">Reviews + 500+ profile views/month</div>
+    </div>
+    <div class="card dark">
+      <div class="card-lbl">Month 3 GMB Goal</div>
+      <div class="big-num" style="color:var(--gold-lt);">60+</div>
+      <div class="sub" style="color:var(--teal-lt);">Reviews + rank for 5+ local keywords</div>
+    </div>
+  </div>
+
+  <div class="sec"><div class="dot"></div><h2>4-Page Website — Structure & Plan</h2><div class="line"></div></div>
+  <div class="ins gold"><strong>Website Pricing:</strong> Listed price ₹28,000 (negotiable to ₹22,000 if needed). Domain + hosting are additional (~₹3,500–5,000/year). We build mobile-first, fast, clean — WhatsApp booking on every page. No unnecessary features. This site's one job is to capture leads and rank on Google.</div>
+
+  <div class="wp-page">
+    <div class="wp-head"><div class="wp-num">01</div><div><h4>Home Page</h4><p>First impression + trust builder + all-services overview</p></div></div>
+    <div class="wp-body">
+      <ul>
+        <li><strong>Hero section:</strong> Clinic name, tagline ("Authentic Ayurveda, Adoor"), WhatsApp Book Now button, hero image from shoot</li>
+        <li><strong>3 service highlights:</strong> Panchakarma · Postnatal Care · Ayurvedic Beauty Clinic — each with icon and short description</li>
+        <li><strong>₹1,999 Rejuvenation Package highlight:</strong> Special callout card with CTA</li>
+        <li><strong>About the clinic:</strong> 2–3 sentences on doctor/tradition, trust-building</li>
+        <li><strong>GMB review embed or static testimonial quotes</strong></li>
+        <li><strong>Location map + contact strip at bottom</strong></li>
+        <li>WhatsApp floating button on all pages</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wp-page">
+    <div class="wp-head"><div class="wp-num">02</div><div><h4>Treatments & Services Page</h4><p>Full list of all treatments with descriptions and pricing signals</p></div></div>
+    <div class="wp-body">
+      <ul>
+        <li>Panchakarma — what it is, duration, benefits (no jargon)</li>
+        <li>Abhyangam, Shirodhara, Kizhi, Njavarakizhi — each with a photo and 2-line description</li>
+        <li>Rejuvenation Package ₹1,999 — featured prominently</li>
+        <li>FAQ section: "Which treatment is right for me?" → simple guide</li>
+        <li>Appointment request form or WhatsApp CTA after each service</li>
+        <li>Karkidaka / seasonal treatment highlight (updated seasonally)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wp-page">
+    <div class="wp-head"><div class="wp-num">03</div><div><h4>Postnatal Care Page</h4><p>Dedicated landing page — highest lead-gen potential service</p></div></div>
+    <div class="wp-body">
+      <ul>
+        <li>Headline targeting the exact search: "Ayurvedic Postnatal Care in Adoor, Pathanamthitta"</li>
+        <li>What is Sutika Paricharya — simple, reassuring explanation</li>
+        <li>What's included: baby massage, mother Abhyangam, herbal bath, diet guidance</li>
+        <li>Package options: 7-day / 14-day / 21-day with inclusions listed</li>
+        <li>Safety: safe after C-section? safe for breastfeeding? — answer these directly</li>
+        <li>Testimonial from postnatal patient (with consent)</li>
+        <li>WhatsApp inquiry CTA — "Talk to our therapist before booking"</li>
+        <li>FAQ section with top 6 postnatal care questions (from Market Intel tab)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wp-page">
+    <div class="wp-head"><div class="wp-num">04</div><div><h4>Ayurvedic Beauty Clinic Page</h4><p>The Instagram-to-website pipeline — beauty seekers land here</p></div></div>
+    <div class="wp-body">
+      <ul>
+        <li>Headline: "Ayurvedic Beauty Clinic in Adoor — Natural Glow, Zero Chemicals"</li>
+        <li>Services: Mukhalepam, Ayurvedic facial, herbal hair pack, skin brightening, tan removal</li>
+        <li>Before/after photos (with explicit patient consent forms)</li>
+        <li>"Why Ayurvedic beauty vs chemical salon?" — answer directly, no jargon</li>
+        <li>Session count guidance: "See difference in X sessions" — realistic, honest</li>
+        <li>Pricing table or "starting from ₹X" signal to qualify leads</li>
+        <li>Instagram feed embed (shows social proof dynamically)</li>
+        <li>WhatsApp booking CTA: "Book your first beauty consultation"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><div class="dot"></div><h2>Other Local Listing Platforms</h2><div class="line"></div></div>
+  <table class="tbl">
+    <thead><tr><th>Platform</th><th>Cost</th><th>Action</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td><strong>JustDial</strong></td><td>Free (basic)</td><td>Create + optimize listing, add photos + services</td><td><span class="badge b-high">HIGH</span> — very high local search traffic</td></tr>
+      <tr><td><strong>Sulekha</strong></td><td>Free (basic)</td><td>Claim/create listing with all treatment categories</td><td><span class="badge b-med">MED</span></td></tr>
+      <tr><td><strong>Practo</strong></td><td>Free (doctor profile)</td><td>List Ayurvedic doctor with clinic link</td><td><span class="badge b-med">MED</span> — medical trust signal</td></tr>
+      <tr><td><strong>IndiaMART</strong></td><td>Free (basic)</td><td>List wellness services — secondary traffic source</td><td><span class="badge b-low">LOW</span></td></tr>
+      <tr><td><strong>Google Maps</strong></td><td>Free (GMB)</td><td>Already in GMB plan — maps auto-updated</td><td><span class="badge b-high">HIGHEST</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════ 30-DAY PLAN ══════════════ -->
+<div class="panel" id="tab-plan30">
+  <div class="hero">
+    <div class="tag">Execution Timeline</div>
+    <h1>30-Day Launch Plan</h1>
+    <p>Week-by-week breakdown of every action across DM, Design, Client, and Ops — with progress tracking.</p>
+  </div>
+
+  <div class="wk open">
+    <div class="wk-head" onclick="toggleWk(this)">
+      <div class="wk-title">📍 Week 1 — Foundation: Profiles, Brand Kit, GMB</div>
+      <div class="wk-prog"><div class="mini-bar"><div class="mini-fill" style="width:0%"></div></div><span class="mini-pct" id="w1p">0%</span></div>
+      <span class="wk-chev">▾</span>
+    </div>
+    <div class="wk-body">
+      <div class="task-list" id="wl1">
+        <div class="task" onclick="chk(this,'w1p','wl1')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Fully optimize Mahalyasi GMB — name, categories (Ayurvedic Clinic, Panchakarma, Beauty), description, hours, services</div><div class="tmeta"><span class="pill p-dm">DM</span><span class="pill p-week">W1</span></div></div></div>
+        <div class="task" onclick="chk(this,'w1p','wl1')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Seed 10 Q&As on GMB — from the FAQ list in Market Intel tab</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+        <div class="task" onclick="chk(this,'w1p','wl1')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Set up / audit Facebook Business Page + Instagram Business Profile — bio, link, category</div><div class="tmeta"><span class="pill p-dm">DM</span><span class="pill p-client">CLIENT</span></div></div></div>
+        <div class="task" onclick="chk(this,'w1p','wl1')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Set up WhatsApp Business — catalog with Rejuvenation Package, Postnatal Care, Beauty Clinic; auto-reply message</div><div class="tmeta"><span class="pill p-dm">DM</span><span class="pill p-ops">OPS</span></div></div></div>
+        <div class="task" onclick="chk(this,'w1p','wl1')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Design Mahalyasi brand kit — color palette, font, logo usage guide, 6 social templates</div><div class="tmeta"><span class="pill p-design">DESIGN</span></div></div></div>
+        <div class="task" onclick="chk(this,'w1p','wl1')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Compile initial WhatsApp broadcast list from Mr. Jayakrishnan's existing patient contacts (min 80 numbers)</div><div class="tmeta"><span class="pill p-client">CLIENT</span><span class="pill p-ops">OPS</span></div></div></div>
+        <div class="task" onclick="chk(this,'w1p','wl1')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Create JustDial + Sulekha listings — complete with all treatments, photos, contact</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+        <div class="task" onclick="chk(this,'w1p','wl1')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Share shoot day brief with Mahalyasi team — shot list, timing, patient consent form</div><div class="tmeta"><span class="pill p-design">DESIGN</span><span class="pill p-client">CLIENT</span></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wk">
+    <div class="wk-head" onclick="toggleWk(this)">
+      <div class="wk-title">📷 Week 2 — First Shoot + Content Engine Launch</div>
+      <div class="wk-prog"><div class="mini-bar"><div class="mini-fill" style="width:0%"></div></div><span class="mini-pct" id="w2p">0%</span></div>
+      <span class="wk-chev">▾</span>
+    </div>
+    <div class="wk-body">
+      <div class="task-list" id="wl2">
+        <div class="task" onclick="chk(this,'w2p','wl2')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Execute Shoot Day 1 (Clinic Foundation + Treatments) — coordinate with local freelance videographer</div><div class="tmeta"><span class="pill p-design">DESIGN</span><span class="pill p-client">CLIENT</span><span class="pill p-week">W2</span></div></div></div>
+        <div class="task" onclick="chk(this,'w2p','wl2')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Edit and batch-schedule 3 Reels + 6 static posts from shoot footage (2-week content buffer)</div><div class="tmeta"><span class="pill p-design">DESIGN</span><span class="pill p-dm">DM</span></div></div></div>
+        <div class="task" onclick="chk(this,'w2p','wl2')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Upload 15+ photos from shoot to GMB — clinic, treatments, team</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+        <div class="task" onclick="chk(this,'w2p','wl2')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Launch Meta Ad Campaign 1: ₹1,999 Rejuvenation Package — lead gen form, 10km radius</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+        <div class="task" onclick="chk(this,'w2p','wl2')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Launch Meta Ad Campaign 2: Postnatal Care awareness — women 23–38, 15km radius</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+        <div class="task" onclick="chk(this,'w2p','wl2')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Send WhatsApp Broadcast #1 — Mahalyasi re-introduction message to patient list</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+        <div class="task" onclick="chk(this,'w2p','wl2')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Begin website project — share website brief + sitemap with development team</div><div class="tmeta"><span class="pill p-design">DESIGN</span><span class="pill p-ops">OPS</span></div></div></div>
+        <div class="task" onclick="chk(this,'w2p','wl2')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Start review push — give QR code to clinic staff; patient leaves → show QR → ask for Google review</div><div class="tmeta"><span class="pill p-ops">OPS</span><span class="pill p-client">CLIENT</span></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wk">
+    <div class="wk-head" onclick="toggleWk(this)">
+      <div class="wk-title">🔁 Week 3 — Optimize Ads + Referral Engine + Beauty Clinic Push</div>
+      <div class="wk-prog"><div class="mini-bar"><div class="mini-fill" style="width:0%"></div></div><span class="mini-pct" id="w3p">0%</span></div>
+      <span class="wk-chev">▾</span>
+    </div>
+    <div class="wk-body">
+      <div class="task-list" id="wl3">
+        <div class="task" onclick="chk(this,'w3p','wl3')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Review Week 2 ad performance — pause weak creative, scale winner ad set, check CPL</div><div class="tmeta"><span class="pill p-dm">DM</span><span class="pill p-week">W3</span></div></div></div>
+        <div class="task" onclick="chk(this,'w3p','wl3')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Launch referral program — WhatsApp referral message template + printed referral card for clinic</div><div class="tmeta"><span class="pill p-design">DESIGN</span><span class="pill p-ops">OPS</span></div></div></div>
+        <div class="task" onclick="chk(this,'w3p','wl3')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Execute Shoot Day 2 — Beauty Clinic + Postnatal Care focus</div><div class="tmeta"><span class="pill p-design">DESIGN</span><span class="pill p-client">CLIENT</span></div></div></div>
+        <div class="task" onclick="chk(this,'w3p','wl3')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Post beauty clinic launch Reel + static post — announce clinic, services, first session offer</div><div class="tmeta"><span class="pill p-dm">DM</span><span class="pill p-design">DESIGN</span></div></div></div>
+        <div class="task" onclick="chk(this,'w3p','wl3')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">WhatsApp Broadcast #2 — Postnatal care awareness message (value-first, no hard sell)</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+        <div class="task" onclick="chk(this,'w3p','wl3')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Visit / call 3 maternity clinics / gynecology centers near Adoor — introduce Mahalyasi, leave postnatal brochure</div><div class="tmeta"><span class="pill p-ops">OPS</span><span class="pill p-client">CLIENT</span></div></div></div>
+        <div class="task" onclick="chk(this,'w3p','wl3')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Google review target check — should be at 10+ reviews by Week 3 end</div><div class="tmeta"><span class="pill p-ops">OPS</span></div></div></div>
+        <div class="task" onclick="chk(this,'w3p','wl3')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Website — design mockup review and feedback round with client</div><div class="tmeta"><span class="pill p-design">DESIGN</span><span class="pill p-client">CLIENT</span></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wk">
+    <div class="wk-head" onclick="toggleWk(this)">
+      <div class="wk-title">📈 Week 4 — Report, Review, Month 2 Planning</div>
+      <div class="wk-prog"><div class="mini-bar"><div class="mini-fill" style="width:0%"></div></div><span class="mini-pct" id="w4p">0%</span></div>
+      <span class="wk-chev">▾</span>
+    </div>
+    <div class="wk-body">
+      <div class="task-list" id="wl4">
+        <div class="task" onclick="chk(this,'w4p','wl4')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Compile Month 1 results report — ad leads, walkins tracked, GMB views, WhatsApp inquiries, reviews earned</div><div class="tmeta"><span class="pill p-dm">DM</span><span class="pill p-week">W4</span></div></div></div>
+        <div class="task" onclick="chk(this,'w4p','wl4')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Client review meeting — present results, confirm Month 2 plan, discuss Phase 2 cross-lead strategy</div><div class="tmeta"><span class="pill p-client">CLIENT</span><span class="pill p-ops">OPS</span></div></div></div>
+        <div class="task" onclick="chk(this,'w4p','wl4')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">WhatsApp Broadcast #3 — Month 2 special offer / Karkidaka season awareness</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+        <div class="task" onclick="chk(this,'w4p','wl4')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Website development completion target — final review, test on mobile, soft launch</div><div class="tmeta"><span class="pill p-design">DESIGN</span><span class="pill p-ops">OPS</span></div></div></div>
+        <div class="task" onclick="chk(this,'w4p','wl4')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Add website URL to GMB, WhatsApp Bio, Instagram Bio, Facebook Page</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+        <div class="task" onclick="chk(this,'w4p','wl4')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Plan Month 2 ad campaigns — include retargeting audience from website visitors</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+        <div class="task" onclick="chk(this,'w4p','wl4')"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Start planning Shoot Day 3 (Testimonials) — identify willing patients, consent forms ready</div><div class="tmeta"><span class="pill p-client">CLIENT</span><span class="pill p-design">DESIGN</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ DM TASKS ══════════════ -->
+<div class="panel" id="tab-dmtasks">
+  <div class="hero">
+    <div class="tag">Digital Marketing Tasks</div>
+    <h1>DM Execution Checklist</h1>
+    <p>All social, ads, GMB, WhatsApp, and listing tasks — filtered by team responsibility.</p>
+  </div>
+  <div class="filter-bar">
+    <button class="fbtn active" onclick="filterT(this,'all','dml')">All</button>
+    <button class="fbtn" onclick="filterT(this,'p-dm','dml')">DM Team</button>
+    <button class="fbtn" onclick="filterT(this,'p-client','dml')">Client Action</button>
+    <button class="fbtn" onclick="filterT(this,'p-ops','dml')">Ops</button>
+  </div>
+  <div class="task-list" id="dml">
+    <div class="task" onclick="chk(this)" data-tags="p-dm"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">GMB full optimization + Q&A seeding (10 questions) + service descriptions</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+    <div class="task" onclick="chk(this)" data-tags="p-dm"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Set up Meta Business Suite, connect FB + IG, create ad account, set up pixel</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+    <div class="task" onclick="chk(this)" data-tags="p-dm"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Launch Campaign 1: Rejuvenation Package ₹1,999 — lead gen form, 10km, ₹5k/month</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+    <div class="task" onclick="chk(this)" data-tags="p-dm"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Launch Campaign 2: Postnatal Care / Beauty Clinic (rotate monthly) — women 23–40, 15km, ₹5k/month</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+    <div class="task" onclick="chk(this)" data-tags="p-dm"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Instagram: 2 Reels + 1 carousel/week + 5 Stories/week — all scheduled in advance</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+    <div class="task" onclick="chk(this)" data-tags="p-dm"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Facebook: 2 posts/week — educational + service feature, share Reels</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+    <div class="task" onclick="chk(this)" data-tags="p-dm"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">WhatsApp broadcast: 3x/month — treatment feature, seasonal offer, health tip (never spam)</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+    <div class="task" onclick="chk(this)" data-tags="p-dm"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">GMB weekly posts: 2/week — treatment spotlight + offer/seasonal post</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+    <div class="task" onclick="chk(this)" data-tags="p-dm"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Monitor and respond to all GMB reviews + DM inquiries within 24 hours</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+    <div class="task" onclick="chk(this)" data-tags="p-dm"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Ad weekly review: check CPL, reach, frequency — optimize or pause</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+    <div class="task" onclick="chk(this)" data-tags="p-dm"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">JustDial + Sulekha + Practo listing setup and monthly refresh</div><div class="tmeta"><span class="pill p-dm">DM</span></div></div></div>
+    <div class="task" onclick="chk(this)" data-tags="p-client"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Client: staff to show QR code to every leaving patient for Google review</div><div class="tmeta"><span class="pill p-client">CLIENT</span></div></div></div>
+    <div class="task" onclick="chk(this)" data-tags="p-ops"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Track daily walkins — source (walk-in / WhatsApp / ad lead / referral) in simple log</div><div class="tmeta"><span class="pill p-ops">OPS</span><span class="pill p-client">CLIENT</span></div></div></div>
+    <div class="task" onclick="chk(this)" data-tags="p-ops"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Monthly performance report shared with Mr. Jayakrishnan — metrics, wins, next month focus</div><div class="tmeta"><span class="pill p-ops">OPS</span><span class="pill p-dm">DM</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══════════════ DESIGN TASKS ══════════════ -->
+<div class="panel" id="tab-designtasks">
+  <div class="hero">
+    <div class="tag">Creative & Design Tasks</div>
+    <h1>Design Execution Checklist</h1>
+    <p>All creative assets, shoot edits, templates, and web deliverables for Month 1.</p>
+  </div>
+  <div class="task-list">
+    <div class="task" onclick="chk(this)"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Brand kit — color palette (herb green, cream, gold), font selection, logo usage guide</div><div class="tmeta"><span class="pill p-design">DESIGN</span></div></div></div>
+    <div class="task" onclick="chk(this)"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">6 Instagram post templates (treatment, testimonial, offer, tip, quote, service spotlight)</div><div class="tmeta"><span class="pill p-design">DESIGN</span></div></div></div>
+    <div class="task" onclick="chk(this)"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">3 Instagram Story templates (announcement, offer, poll/question)</div><div class="tmeta"><span class="pill p-design">DESIGN</span></div></div></div>
+    <div class="task" onclick="chk(this)"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Shoot Day 1 — edit 3 Reels + 6 static posts from clinic/treatment footage</div><div class="tmeta"><span class="pill p-design">DESIGN</span></div></div></div>
+    <div class="task" onclick="chk(this)"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Shoot Day 2 — edit 3 Reels + 6 static posts (beauty clinic + postnatal)</div><div class="tmeta"><span class="pill p-design">DESIGN</span></div></div></div>
+    <div class="task" onclick="chk(this)"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">2 Ad creatives for Campaign 1 (Rejuvenation) — 1:1 + 4:5 format, clean, offer-led</div><div class="tmeta"><span class="pill p-design">DESIGN</span></div></div></div>
+    <div class="task" onclick="chk(this)"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">2 Ad creatives for Campaign 2 (Postnatal / Beauty) — empathetic, trust-building visuals</div><div class="tmeta"><span class="pill p-design">DESIGN</span></div></div></div>
+    <div class="task" onclick="chk(this)"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Patient consent form design (print + WhatsApp share) — for testimonials and before/after photos</div><div class="tmeta"><span class="pill p-design">DESIGN</span></div></div></div>
+    <div class="task" onclick="chk(this)"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Google review QR code poster — A4 for clinic desk, WhatsApp share version</div><div class="tmeta"><span class="pill p-design">DESIGN</span></div></div></div>
+    <div class="task" onclick="chk(this)"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Referral card design — A6 print + WhatsApp share version</div><div class="tmeta"><span class="pill p-design">DESIGN</span></div></div></div>
+    <div class="task" onclick="chk(this)"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Postnatal care brochure — A5 tri-fold for distribution to maternity clinics</div><div class="tmeta"><span class="pill p-design">DESIGN</span></div></div></div>
+    <div class="task" onclick="chk(this)"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">4-Page Website — design, develop, test, launch (target: by end of Week 4)</div><div class="tmeta"><span class="pill p-design">DESIGN</span><span class="pill p-ops">OPS</span></div></div></div>
+    <div class="task" onclick="chk(this)"><div class="tcb"><svg viewBox="0 0 10 8"><polyline points="1,4 4,7 9,1"/></svg></div><div class="tb"><div class="ttl">Shoot day brief document (PDF) — shot list, timing, consent protocol for clinic team</div><div class="tmeta"><span class="pill p-design">DESIGN</span></div></div></div>
+  </div>
+</div>
+
+<!-- ══════════════ ROADMAP ══════════════ -->
+<div class="panel" id="tab-roadmap">
+  <div class="hero">
+    <div class="tag">3-Month Strategic Roadmap</div>
+    <h1>From Zero Visibility to Local Authority</h1>
+    <p>What we build, in what order, and what defines success at each phase.</p>
+  </div>
+
+  <div class="card" style="margin-bottom:18px;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);">
+      <div style="background:var(--cream);padding:13px;text-align:center;">
+        <div class="card-lbl">Month 1</div>
+        <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--teal);">Ignition</div>
+        <div style="font-size:11.5px;color:var(--warmgrey);margin-top:3px;">Build foundation · First leads</div>
+      </div>
+      <div style="background:var(--cream);padding:13px;text-align:center;">
+        <div class="card-lbl">Month 2</div>
+        <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--gold);">Amplify</div>
+        <div style="font-size:11.5px;color:var(--warmgrey);margin-top:3px;">Website live · Scale what works</div>
+      </div>
+      <div style="background:var(--cream);padding:13px;text-align:center;">
+        <div class="card-lbl">Month 3</div>
+        <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--rose);">Establish</div>
+        <div style="font-size:11.5px;color:var(--warmgrey);margin-top:3px;">Authority · Phase 2 discussion</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rm-phase">
+    <div class="rm-dot">M1</div>
+    <div class="rm-period">Month 1 — Weeks 1–4</div>
+    <div class="rm-title">🌿 Ignition — Presence, Profiles, First Leads</div>
+    <ul>
+      <li>GMB fully optimized, 20+ photos, Q&A seeded, 10+ reviews target</li>
+      <li>Facebook + Instagram posting rhythm live — 3x/week</li>
+      <li>WhatsApp Business + broadcast list (80+ contacts) active</li>
+      <li>2 Meta ad campaigns running (₹10k budget)</li>
+      <li>JustDial + Sulekha listings live</li>
+      <li>Shoot Day 1 & 2 completed — 30+ days of content in buffer</li>
+      <li>Website development in progress</li>
+      <li>Target: 5–7 walkins/day by Week 4 · 15–25 WhatsApp inquiries/month</li>
+    </ul>
+  </div>
+
+  <div class="rm-phase">
+    <div class="rm-dot">M2</div>
+    <div class="rm-period">Month 2 — Weeks 5–8</div>
+    <div class="rm-title">📣 Amplify — Website Live + Retargeting + Referrals</div>
+    <ul>
+      <li>Website launched — website link added to all platforms</li>
+      <li>Retargeting ad campaign activated — website visitors + video viewers</li>
+      <li>Shoot Day 3 completed — testimonials + brand film</li>
+      <li>Referral program live and generating referred patients</li>
+      <li>Maternity clinic / hospital referral tie-ups (2–3 clinics)</li>
+      <li>Google review target: 30+ reviews by Month 2 end</li>
+      <li>Discuss Phase 2 cross-lead strategy from Jayakrishnan's other businesses</li>
+      <li>Target: 7–10 walkins/day · 30–40 monthly inquiries · Beauty clinic 3+ sessions/day</li>
+    </ul>
+  </div>
+
+  <div class="rm-phase">
+    <div class="rm-dot">M3</div>
+    <div class="rm-period">Month 3 — Weeks 9–12</div>
+    <div class="rm-title">🏅 Establish — Local Authority + Phase 2 Planning</div>
+    <ul>
+      <li>Mahalyasi appearing in GMB 3-pack for 3+ local keywords</li>
+      <li>Google reviews: 50+ — strong local trust signal</li>
+      <li>Month-on-month walkin growth of 20%+ from Month 1 baseline</li>
+      <li>Phase 2 decision: activate Jayakrishnan business lead database for WA + Custom Audience</li>
+      <li>Seasonal campaign: Karkidaka Chikitsa (if applicable) — panchakarma push</li>
+      <li>Discuss expansion signals: room capacity, staff additions</li>
+      <li>Target: 10–12 walkins/day · Revenue ₹1.5–1.8L/month · 50+ reviews</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════ KPIs ══════════════ -->
+<div class="panel" id="tab-kpis">
+  <div class="hero">
+    <div class="tag">Key Performance Indicators</div>
+    <h1>Realistic Targets — What Winning Looks Like</h1>
+    <p>Conservative, achievable KPIs based on 2-room capacity and ₹10k/month ad budget. We hit these before scaling.</p>
+  </div>
+  <div class="ins"><strong>Note on KPI Philosophy:</strong> These targets are set to be achievable — not impressive on paper. We'd rather underpromise and overdeliver. Month 1 is always the hardest. If we beat these, great. If we're 20% below, we know what to fix.</div>
+  <table class="tbl tbl-herb">
+    <thead><tr><th>KPI</th><th>Baseline (Est.)</th><th>Month 1</th><th>Month 2</th><th>Month 3</th><th>How We Track</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Daily Walkins</strong></td><td>4–5</td><td>5–7</td><td>7–10</td><td>10–12</td><td>Clinic daily log</td></tr>
+      <tr><td><strong>WhatsApp Inquiries/Month</strong></td><td>~3–5</td><td>15–25</td><td>25–35</td><td>35–50</td><td>WA Business chat count</td></tr>
+      <tr><td><strong>Google Reviews</strong></td><td>0–5</td><td>10–15</td><td>25–35</td><td>45–60</td><td>GMB dashboard</td></tr>
+      <tr><td><strong>GMB Profile Views/Month</strong></td><td>~80–120</td><td>300–500</td><td>600–900</td><td>1,000–1,500</td><td>GMB Insights</td></tr>
+      <tr><td><strong>Instagram Followers</strong></td><td>~200</td><td>350–500</td><td>500–800</td><td>800–1,200</td><td>Instagram Insights</td></tr>
+      <tr><td><strong>Instagram Reach/Month</strong></td><td>~400</td><td>3,000–5,000</td><td>7,000–12,000</td><td>15,000–22,000</td><td>Instagram Insights</td></tr>
+      <tr><td><strong>Ad Leads/Month (Meta)</strong></td><td>0</td><td>18–30</td><td>28–45</td><td>40–60</td><td>Meta Ads Manager</td></tr>
+      <tr><td><strong>Lead → Walkin Conversion</strong></td><td>—</td><td>15–20%</td><td>20–28%</td><td>28–38%</td><td>Manual tracking</td></tr>
+      <tr><td><strong>Postnatal Bookings/Month</strong></td><td>2–4</td><td>5–8</td><td>8–12</td><td>12–18</td><td>Appointment register</td></tr>
+      <tr><td><strong>Beauty Clinic Sessions/Month</strong></td><td>New</td><td>12–20</td><td>25–40</td><td>40–60</td><td>Appointment register</td></tr>
+      <tr><td><strong>Est. Monthly Revenue</strong></td><td>~₹60–80k</td><td>₹90k–1.1L</td><td>₹1.2–1.5L</td><td>₹1.5–1.8L</td><td>Clinic accounts</td></tr>
+      <tr><td><strong>WhatsApp Broadcast List</strong></td><td>—</td><td>80–120</td><td>150–200</td><td>250–350</td><td>WA Business contacts</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════ BUDGET ══════════════ -->
+<div class="panel" id="tab-budget">
+  <div class="hero">
+    <div class="tag">Investment Proposal</div>
+    <h1>Budget Breakdown & Engagement Structure</h1>
+    <p>Transparent, results-first pricing designed for real budget constraints — with a clear growth path.</p>
+  </div>
+
+  <div class="ins gold"><strong>Our Commitment:</strong> Month 1 is a proof-of-traction phase. We deliver, report transparently, and earn the right to grow the relationship. No inflated packages, no vanity metrics.</div>
+
+  <div class="sec"><div class="dot"></div><h2>Month 1–2 — Entry Retainer (Recommended Start)</h2><div class="line"></div></div>
+  <table class="tbl tbl-herb">
+    <thead><tr><th>Service</th><th>What's Included</th><th>Monthly Fee</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Social Media Management</strong></td><td>Instagram (8 posts + 15 stories/mo), Facebook (6 posts/mo), content calendar, captions</td><td>₹10,000</td></tr>
+      <tr><td><strong>Meta Ads Management</strong></td><td>2 campaigns setup + weekly optimization + monthly report (on ₹10k ad spend)</td><td>₹4,000</td></tr>
+      <tr><td><strong>GMB + Local Listings</strong></td><td>Full GMB setup/optimization, weekly posts, Q&A, review monitoring, JustDial/Sulekha</td><td>₹3,000</td></tr>
+      <tr><td><strong>WhatsApp Marketing</strong></td><td>3 monthly broadcasts, list management, WA Business setup</td><td>₹2,000</td></tr>
+      <tr><td><strong>Design Assets</strong></td><td>Templates + ad creatives + shoot edit coordination (up to 6 unique designs/month)</td><td>₹2,000</td></tr>
+      <tr class="total"><td colspan="2"><strong>FlumenX Monthly Retainer (Service)</strong></td><td><strong>₹21,000 + GST</strong></td></tr>
+      <tr class="note"><td colspan="3">+ Ad Spend: ₹10,000/month paid directly by client to Meta — zero markup from our end</td></tr>
+      <tr class="note"><td colspan="3">Total Monthly Investment: ≈ ₹31,000 (service + ads). Leaner than hiring an in-house marketing person with zero digital skills.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec"><div class="dot"></div><h2>Website — 4-Page Build</h2><div class="line"></div></div>
+  <table class="tbl tbl-herb">
+    <thead><tr><th>Deliverable</th><th>Details</th><th>Price</th></tr></thead>
+    <tbody>
+      <tr><td><strong>4-Page Website</strong></td><td>Home, Treatments, Postnatal Care, Beauty Clinic — mobile-first, WhatsApp CTA, fast loading, contact form</td><td>₹28,000</td></tr>
+      <tr><td><strong>Negotiated / Early-Bird</strong></td><td>If confirmed within 7 days of proposal</td><td>₹22,000</td></tr>
+      <tr class="note"><td colspan="3">Domain registration: ~₹800–1,200/year (additional) | Hosting: ~₹2,500–4,000/year (additional) — client pays provider directly</td></tr>
+      <tr class="note"><td colspan="3">Includes: WhatsApp floating button, Google Maps embed, GMB integration, basic SEO setup (titles, descriptions, schema). Excludes: custom integrations, payment gateway, blog setup.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec"><div class="dot"></div><h2>Month 3+ — Growth Phase (if Month 1–2 targets met)</h2><div class="line"></div></div>
+  <table class="tbl tbl-herb">
+    <thead><tr><th>Upgrade</th><th>Details</th><th>Monthly Add-on</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Retargeting Campaigns</strong></td><td>Website visitors + video viewers → follow-up ad. Drops CPL by 40%+</td><td>₹3,000 (mgmt)</td></tr>
+      <tr><td><strong>Cross-Lead Custom Audience</strong></td><td>Upload Jayakrishnan's other business lead DB to Meta Custom Audience for Mahalyasi targeting</td><td>₹2,000 (setup)</td></tr>
+      <tr><td><strong>Increased Ad Spend</strong></td><td>Scale to ₹18k/month ads — add beauty clinic + seasonal campaigns</td><td>+₹8k ad spend</td></tr>
+      <tr><td><strong>SAG·EO Content Layer</strong></td><td>FAQ pages, blog posts answering patient search queries — ranks for free traffic over time</td><td>₹5,000/month</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ins rose"><strong>What we're NOT doing:</strong> No AI-generated poster floods. No "30 posts a month" content spam. No meetings-only, reports-only engagement. We are active, accountable, and reachable — that's the FlumenX difference from what Mr. Jayakrishnan experienced before.</div>
+</div>
+
+<!-- ══════════════ RISKS ══════════════ -->
+<div class="panel" id="tab-risks">
+  <div class="hero">
+    <div class="tag">Risk Register</div>
+    <h1>Risks We See — And How We Handle Them</h1>
+    <p>Identified before they become problems. Mitigated intelligently.</p>
+  </div>
+
+  <div class="risk"><div class="rlvl high">HIGH</div><div><h4>2-Room Capacity Ceiling</h4><p>If campaigns succeed fast, appointment demand could exceed capacity before Month 2. Overbooking kills patient experience and generates negative reviews — undoing all marketing work. <strong>Mitigation:</strong> Track room utilization weekly. If consistently above 75%, immediately flag to Mr. Jayakrishnan for capacity conversation. Never sacrifice experience for volume. We reduce ad spend before we overbook.</p></div></div>
+
+  <div class="risk"><div class="rlvl high">HIGH</div><div><h4>₹10k/Month Ad Budget — Tight for Lead Gen</h4><p>₹10k across 10–15km radius can deliver 18–30 leads/month if creatives perform. If shoot assets aren't ready Week 2, ads go live with inferior creatives and CPL suffers. <strong>Mitigation:</strong> Shoot Day 1 must happen in Week 2. We prepare at least 1 ad creative from phone photos as backup for Day 1 if shoot is delayed.</p></div></div>
+
+  <div class="risk"><div class="rlvl med">MED</div><div><h4>Shoot Coordination Dependency</h4><p>Content quality depends on a clinic-side shoot happening. If the freelance videographer or patient timing doesn't align, we lose 2 weeks of feed content. <strong>Mitigation:</strong> We prepare a full "no-shoot content pack" — text-on-background posts, herb/product flat lays the staff can shoot on phone using our brief. Enough for 10 posts without a cameraman.</p></div></div>
+
+  <div class="risk"><div class="rlvl med">MED</div><div><h4>Patient Consent for Beauty Before/After Content</h4><p>Beauty clinic result photos are the highest-performing content type but require explicit consent. Not collecting this properly creates trust and legal risk. <strong>Mitigation:</strong> We design a simple 1-page consent form. Staff to collect from beauty clinic patients who are willing. Zero content published without signed consent.</p></div></div>
+
+  <div class="risk"><div class="rlvl med">MED</div><div><h4>Cross-Lead Activation (Phase 2) Needs Explicit Approval</h4><p>Using lead databases from Jayakrishnan's other businesses for WhatsApp or Meta targeting requires his clear authorization and compliance with Meta's policy. <strong>Mitigation:</strong> We don't touch this in Month 1. We table it at the Month 1 review meeting as a Phase 2 opportunity with a clear brief on what's needed from his end.</p></div></div>
+
+  <div class="risk"><div class="rlvl low">LOW</div><div><h4>Seasonal Demand Dip</h4><p>Panchakarma demand peaks during Karkidaka (monsoon, June–Sept). Off-peak months could see walkin drops. <strong>Mitigation:</strong> Beauty clinic and postnatal care are year-round services — we shift ad weight to these during Panchakarma off-season. Seasonal calendar built into content plan.</p></div></div>
+
+  <div class="risk"><div class="rlvl low">LOW</div><div><h4>Google Review Generation Pace</h4><p>Getting 10+ reviews in Month 1 requires consistent effort from clinic staff — many clinics skip this step. <strong>Mitigation:</strong> We design a frictionless review QR code system, brief the staff personally, and track weekly. This is non-negotiable for GMB ranking.</p></div></div>
+</div>
+
+</div><!-- /main -->
+
+<div class="doc-footer" style="max-width:1160px;margin:0 auto;padding:20px 18px;">
+  <div class="sig">Prepared by Misc Archive × FlumenX | anoopkrishna@flumenx.com | +91 8907 634900</div>
+  <div class="tag">"Make It Happen" — FlumenX</div>
+</div>
+
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  const p=(d.scrollTop/(d.scrollHeight-d.clientHeight))*100;
+  document.getElementById('progBar').style.width=p+'%';
+});
+function toggleWk(head){
+  head.closest('.wk').classList.toggle('open');
+}
+function chk(item,pctId,listId){
+  item.classList.toggle('done');
+  if(pctId&&listId){
+    const list=document.getElementById(listId);
+    const all=list.querySelectorAll('.task');
+    const done=list.querySelectorAll('.task.done');
+    const p=Math.round((done.length/all.length)*100);
+    document.getElementById(pctId).textContent=p+'%';
+    const fill=item.closest('.wk')?.querySelector('.mini-fill');
+    if(fill)fill.style.width=p+'%';
+  }
+}
+function filterT(btn,tag,listId){
+  document.querySelectorAll('.filter-bar .fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(listId).querySelectorAll('.task').forEach(t=>{
+    t.style.display=(tag==='all'||t.dataset.tags===tag)?'flex':'none';
+  });
+}
+</script>
+</body>
+</html>
